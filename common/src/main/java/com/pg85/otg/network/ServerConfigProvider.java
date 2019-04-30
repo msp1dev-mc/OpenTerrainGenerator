@@ -102,8 +102,11 @@ public final class ServerConfigProvider implements ConfigProvider
     	ArrayList<String> biomes = new ArrayList<String>();
     	File biomesDirectory = new File(settingsDir, WorldStandardValues.WORLD_BIOMES_DIRECTORY_NAME); 	
 
-    	AddBiomesFromDirRecursive(biomes, biomesDirectory);
-    	
+    	if (biomesDirectory.exists() && biomesDirectory.isDirectory())
+		{
+    		AddBiomesFromDirRecursive(biomes, biomesDirectory);
+		}
+
         this.worldConfig = new WorldConfig(settingsDir, settingsMap, world, biomes);
         FileSettingsWriter.writeToFile(worldConfig.getSettingsAsMap(), worldConfigFile, worldConfig.SettingsMode);
 

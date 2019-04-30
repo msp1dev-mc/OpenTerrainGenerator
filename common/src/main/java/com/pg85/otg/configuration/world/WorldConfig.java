@@ -374,6 +374,7 @@ public class WorldConfig extends ConfigFile
 
         if(biomes != null) // Can be null when loading the world config for the Forge world creation menu
         {
+            // Note that biomes may be empty at this point if no configuration has been created for the world yet.
 	        for(String biome : biomes)
 	        {
 	        	// TODO: Retrieve any already existing id's for the biomes
